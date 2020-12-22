@@ -31,18 +31,21 @@
       </div>
       <div class="form-group">
         <label>Image (Max of 4)</label>
-        <input type="image" class="form-control" v-model="item.image">
+        <input type="text" class="form-control" v-model="item.images">
       </div>
 
       <div>
         <input type="submit" class="btn btn-primary" value="Submit">
+
       </div>
-      
-      
+
+      <button v-on:click="destroyItem(item)">Delete Item</button>
+      <router-link v-bind:to="`/items/`">Cancel</router-link>
+
 
     </form>
 
-
+     
     
 
 
@@ -68,30 +71,34 @@ export default {
   methods: {
     updateItem: function(item){
       var params = {
-        username: item.username,
-        description: item.description,
-        image: item.image,
-        ideal_trade: item.ideal_trade,
-        city: item.city,
-        state: item.state,
-        zipcode: item.zipcode
+        username: this.item.username,
+        description: this.item.description,
+        image: this.item.image,
+        ideal_trade: this.item.ideal_trade,
+        city: this.item.city,
+        state: this.item.state,
+        zipcode: this.item.zipcode
       };
       axios
+        .patch("/api/items/" + item.id, params)
         .then(response => {
-          this.$router.push("/posts");
+          this.$router.push("/items");
         })
         .catch(error => {
           this.errors = error.response.data.errors;
 
       });
     },
-    // destroyItem: function(item){
-    //   axios.delete("/api/items/" + items.id).then(response => {
-    //     console.log("item Deleted", response.data);
-    //     var index = this.item.indexOf(item)
-    //     this.item.splice(index, 1);
-    //   });
-    // },
+    destroyItem: function(item){
+      axios
+      .delete("/api/items/" + item.id)
+      .then(response => {
+        console.log("item Deleted", response.data);
+        var index = this.item.indexOf(item)
+        this.item.splice(index, 1);
+        this.$router.push("/items");
+      });
+    },
   },
 };
 </script>

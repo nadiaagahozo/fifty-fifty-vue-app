@@ -2,11 +2,10 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/upload">Upload</router-link> |
+      <router-link to="/items/new">New Post(Upload)</router-link> |
       <router-link to="/signup">Signup</router-link> |
       <router-link to="/Login">Login</router-link> |
       <router-link to="/Logout">Logout</router-link> |
-      <router-link to="/update">Update</router-link> |
       
     </div>
     <router-view/>

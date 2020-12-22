@@ -7,12 +7,11 @@
       <p>username: {{ item.username }}</p>
       <p>ideal trade: {{ item.ideal_trade }}</p>
       <router-link v-bind:to="`/items/${item.id}`">More Info</router-link>
-    </div>
-
-    <div>
       
     </div>
 
+    
+    
 
 
 
@@ -51,7 +50,7 @@ export default {
       console.log(item);
       this.currentItem = item;
     },
-    createRecipe: function(){
+    createItem: function(){
       console.log("New Item");
       var params = {
       listing: this.newItemListing,
@@ -65,26 +64,25 @@ export default {
       };
       axios.post("/api/items", params).then(response => {
         console.log("Success", response.data);
-        this.recipes.push(response.data);
+        this.items.push(response.data);
       })
       .catch(error => console.log(error.response));
     },
     updateItem: function(item){
      var params = {
-        listing: item.listing,
-        description: item.description,
-        ideal_trade: item.ideal_trade,
-        username: item.username,
-        image: item.image,
-        city: item.city,
-        state: item.state,
-        zipcode: item.zipcode,
+        listing: this.item.listing,
+        description: this.item.description,
+        ideal_trade: this.item.ideal_trade,
+        username: this.item.username,
+        image: this.item.image,
+        city: this.item.city,
+        state: this.item.state,
+        zipcode: this.item.zipcode,
       };
       axios.patch("/api/items/" + item.id, params).then(response => {
         console.log("Success", response.data);
       });
     },
-    
   },
 }
 </script>

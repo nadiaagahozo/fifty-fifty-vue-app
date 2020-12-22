@@ -1,7 +1,7 @@
 <template>
   <div class="items-new">
     <form v-on:submit.prevent="submit()">
-      <h1>Create a new recipe</h1>
+      <h1>Create a new item</h1>
       <ul>
         <li class="text-danger" v-for="error in errors">{{ error }}</li>
       </ul>
@@ -12,10 +12,6 @@
       <div class="form-group">
         <label>Description:</label>
         <input type="text" class="form-control" v-model="description" />
-      </div>
-      <div class="form-group">
-        <label>Username:</label>
-        <input type="text" class="form-control" v-model="username" />
       </div>
       <div class="form-group">
         <label>Ideal trade:</label>
@@ -42,6 +38,7 @@
       </div>
 
       <input type="submit" class="btn btn-primary" value="Submit" />
+      <router-link v-bind:to="`/`"> Home</router-link>
     </form>
 
   </div>
@@ -61,6 +58,7 @@ export default {
       city: "",
       state: "",
       zipcode: "",
+      errors: [],
     };
   },
   methods: {
@@ -76,7 +74,7 @@ export default {
       zipcode: this.item.zipcode,
     };
     axios
-      .post("/api/posts", params)
+      .post("/api/items", params)
       .then(response => {
       this.$router.push("/items");
     })
@@ -84,6 +82,9 @@ export default {
         this.errors = error.response.data.errors;
       });
     },
+    // showItem: function(item){
+    //   console.log(item);
+    //   this.currentItem = item;
   },
 };
 </script>
