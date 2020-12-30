@@ -1,46 +1,18 @@
 <template>
   <div class="items-new">
-    <form v-on:submit.prevent="submit()">
-      <h1>Create a new item</h1>
-      <ul>
-        <li class="text-danger" v-for="error in errors">{{ error }}</li>
-      </ul>
-      <div class="form-group">
-        <label>Listing:</label>
-        <input type="text" class="form-control" v-model="listing" />
-      </div>
-      <div class="form-group">
-        <label>Description:</label>
-        <input type="text" class="form-control" v-model="description" />
-      </div>
-      <div class="form-group">
-        <label>Ideal trade:</label>
-        <input type="text" class="form-control" v-model="ideal_trade" />
-      </div>
-      <div class="form-group">
-        <label>Image:</label>
-        <input type="text" class="form-control" v-model="image" />
-      </div>
-
-      <div class="form-group">
-        <label>City:</label>
-        <input type="text" class="form-control" v-model="city" />
-      </div>
-
-      <div class="form-group">
-        <label>State:</label>
-        <input type="text" class="form-control" v-model="state" />
-      </div>
-
-      <div class="form-group">
-        <label> zipcode:</label>
-        <input type="text" class="form-control" v-model="zipcode" />
-      </div>
-
-      <input type="submit" class="btn btn-primary" value="Submit" />
-      <router-link v-bind:to="`/`"> Home</router-link>
-    </form>
-
+    <h1>New Post</h1>
+    <div>
+      Listing: <input type="text" v-model="newItemListing" />
+      Description: <input type="text" v-model="newItemDescription" />
+      Ideal_trade: <input type="text" v-model="newItemIdealTrade" />
+      Image: <input type="text" v-model="newItemImage" />
+      City: <input type="text" v-model="newItemCity" />
+      State: <input type="text" v-model="newItemState" />
+      Zipcode: <input type="text" v-model="newItemZipcode" />
+      <button v-on:click="createItem()"> New Post</button>
+    </div>
+    
+    <router-link v-bind:to="`/`"> Home</router-link>
   </div>
 </template>
 
@@ -50,41 +22,48 @@ import axios from "axios";
 export default {
   data: function() {
     return {
-      listing: "",
-      description: "",
-      ideal_trade: "",
-      username: "",
-      image: "",
-      city: "",
-      state: "",
-      zipcode: "",
-      errors: [],
+      items: [],
+      newItemListing: "",
+      newItemDescription: "",
+      newItemIdealTrade: "",
+      newItemImage: "",
+      newItemCity: "",
+      newItemState: "",
+      newItemZipcode: "",
+      currentItem: {},
     };
   },
-  methods: {
-    submit: function() {
-      var params = {
-      listing: this.item.listing,
-      description: this.item.description,
-      ideal_trade: this.item.ideal_trade,
-      username: this.item.username,
-      image: this.item.image,
-      city: this.item.city,
-      state: this.item.state,
-      zipcode: this.item.zipcode,
+  // created: function(){
+  //   this.items = response.data;
+  // },
+  createItem: function(){
+    console.log("New Item");
+    var params = {
+    listing: this.newItemListing,
+    description: this.newItemDescription,
+    ideal_trade: this.newItemIdealTrade,
+    image: this.newItemImage,
+    city: this.newItemCity,
+    state: this.newItemState,
+    zipcode: this.newItemZipcode,
     };
-    axios
-      .post("/api/items", params)
-      .then(response => {
-      this.$router.push("/items");
+    axios.post("/api/items", params).then(response => {
+      console.log("Success", response.data);
+      this.items.push(response.data);
+      this.newItemListing = "";
+      this.newItemDescription = "";
+      this.newItemIdealTrade = "";
+      this.newItemImage = "";
+      this.newItemCity = "";
+      this.newItemState = "";
+      this.newItemZipcode = "";
     })
-    .catch(error => {
-        this.errors = error.response.data.errors;
-      });
-    },
-    // showItem: function(item){
-    //   console.log(item);
-    //   this.currentItem = item;
+    .catch(error => console.log(error.response));
   },
+  // showItem: function(item){
+  //   console.log(item);
+  //   this.currentItem = item;
+  // },
 };
 </script>
+
