@@ -6,8 +6,8 @@
         <li class="text-danger" v-for="error in errors">{{ error }}</li>
       </ul>
       <div class="form-group">
-        <label>Username:</label> 
-        <input type="text" class="form-control" v-model="item.username">
+        <label>Listing:</label> 
+        <input type="text" class="form-control" v-model="item.listing">
       </div>
       <div class="form-group">
         <label>Description:</label>
@@ -71,9 +71,9 @@ export default {
   methods: {
     updateItem: function(item){
       var params = {
-        username: this.item.username,
+        listing: this.item.listing,
         description: this.item.description,
-        image: this.item.image,
+        images: this.item.images,
         ideal_trade: this.item.ideal_trade,
         city: this.item.city,
         state: this.item.state,

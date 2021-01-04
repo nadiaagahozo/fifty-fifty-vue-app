@@ -1,19 +1,68 @@
 <template>
   <div class="items-new">
-    <h1>New Post</h1>
-    <div>
-      Listing: <input type="text" v-model="newItemListing" />
-      Description: <input type="text" v-model="newItemDescription" />
-      Ideal_trade: <input type="text" v-model="newItemIdealTrade" />
-      Image: <input type="text" v-model="newItemImage" />
-      <img v-bind:src="`${item.images}`" v-bind:alt="item.listing">
-      City: <input type="text" v-model="newItemCity" />
-      State: <input type="text" v-model="newItemState" />
-      Zipcode: <input type="text" v-model="newItemZipcode" />
-      <button v-on:click="createItem()"> New Post</button>
-    </div>
+    <form v-on:submit.prevent="createItem(item)">
+      <h1>New Post</h1>
+      <ul>
+        <li class="text-danger" v-for="error in errors">{{ error }}</li>
+      </ul>
+
+      <div v-for="item in items">
+        <div class="form-group">
+        <label>Listing:</label> 
+        <input type="text" class="form-control" v-model="item.listing">
+      </div>
+      <div class="form-group">
+        <label>Description:</label>
+        <input type="text" class="form-control" v-model="item.description">
+      </div>
+      <div class="form-group">
+        <label>Ideal Trade:</label>
+        <input type="text" class="form-control" v-model="item.ideal_trade">
+      </div>
+      <div class="form-group">
+        <label>City</label>
+        <input type="text" class="form-control" v-model="item.city">
+      </div>
+      <div class="form-group">
+        <label>State</label>
+        <input type="text" class="form-control" v-model="item.state">
+      </div>
+      <div class="form-group">
+        <label>Zip Code</label>
+        <input type="text" class="form-control" v-model="item.zipcode">
+      </div>
+      <div class="form-group">
+        <label>Image (Max of 4)</label>
+        <input type="text" class="form-control" v-model="item.images">
+      </div>
+
+
+      
+
+      
+
+
+
+
+       
+
+      </div>
+
+      <!-- <div>
+          Description: <input type="text" v-model="description" />
+          Ideal Trade: <input type="text" v-model="ideal_trade" />
+          Image: <input type="text" v-model="images" />
+          <img v-bind:src="`${item.images}`" v-bind:alt="item.listing">
+          City: <input type="text" v-model="city" />
+          State: <input type="text" v-model="state" />
+          Zipcode: <input type="text" v-model="zipcode" /> 
+       </div>  -->
+        
+    </form>
     
+    <button v-on:click="createItem()"> New Post</button>
     <router-link v-bind:to="`/`"> Home</router-link>
+    
   </div>
 </template>
 
@@ -24,49 +73,50 @@ export default {
   data: function() {
     return {
       items: [],
-      newItemListing: "",
-      newItemDescription: "",
-      newItemIdealTrade: "",
-      newItemImage: "",
-      newItemCity: "",
-      newItemState: "",
-      newItemZipcode: "",
+      listing: "",
+      description: "",
+      ideal_trade: "",
+      images: "",
+      city: "",
+      state: "",
+      zipcode: "",
+      errors: [],
       currentItem: {},
     };
   },
   methods: {
-  // created: function(){
-  //   this.items = response.data;
-  // },
+  created: function(){
+    this.items = response.data;
+  },
     createItem: function(){
       console.log("New Item");
       var params = {
-      listing: this.newItemListing,
-      description: this.newItemDescription,
-      ideal_trade: this.newItemIdealTrade,
-      image: this.newItemImage,
-      city: this.newItemCity,
-      state: this.newItemState,
-      zipcode: this.newItemZipcode,
+      listing: this.listing,
+      description: this.description,
+      ideal_trade: this.ideal_trade,
+      images: this.images,
+      city: this.city,
+      state: this.state,
+      zipcode: this.zipcode,
       };
       axios.post("/api/items", params).then(response => {
         console.log("Success", response.data);
         this.items.push(response.data);
-        this.newItemListing = "";
-        this.newItemDescription = "";
-        this.newItemIdealTrade = "";
-        this.newItemImage = "";
-        this.newItemCity = "";
-        this.newItemState = "";
-        this.newItemZipcode = "";
+        this.listing = "";
+        this.description = "";
+        this.ideal_trade = "";
+        this.images = "";
+        this.city = "";
+        this.state = "";
+        this.zipcode = "";
       })
       .catch(error => console.log(error.response));
     },
   },
-  // showItem: function(item){
-  //   console.log(item);
-  //   this.currentItem = item;
-  // },
+  showItem: function(item){
+    console.log(item);
+    this.currentItem = item;
+  },
 };
 </script>
 

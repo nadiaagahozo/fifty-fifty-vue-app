@@ -1,7 +1,6 @@
 <template>
   <div  class="items-show">
     <h2>{{ item.listing }}</h2>
-
     <img v-bind:src="`${item.images}`" v-bind:alt="item.listing">
     
     <p>username: {{ item.username }}</p>
