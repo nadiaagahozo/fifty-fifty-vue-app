@@ -1,6 +1,6 @@
 <template>
   <div class="items-new">
-    <form v-on:submit.prevent="createItem(item)">
+    <!-- <form v-on:submit.prevent="createItem(item)">
       <h1>New Post</h1>
       <ul>
         <li class="text-danger" v-for="error in errors">{{ error }}</li>
@@ -38,16 +38,6 @@
 
 
       
-
-      
-
-
-
-
-       
-
-      </div>
-
       <!-- <div>
           Description: <input type="text" v-model="description" />
           Ideal Trade: <input type="text" v-model="ideal_trade" />
@@ -58,10 +48,57 @@
           Zipcode: <input type="text" v-model="zipcode" /> 
        </div>  -->
         
+    <!-- </form>  -->
+
+    
+    <div>
+    <img v-if="status" v-bind:src="`https://http.cat/${status}`" />
+    <form v-on:submit.prevent="submit()">
+      <h1>New Item</h1>
+      <ul>
+        <li class="text-danger" v-for="error in errors">{{ error }}</li>
+      </ul>
+      <div class="form-group">
+        <label>Listing:</label>
+        <input type="text" class="form-control" v-model="listing" />
+      </div>
+      <div class="form-group">
+        <label>Description:</label>
+        <input type="text" class="form-control" v-model="description" />
+      </div>
+      <div class="form-group">
+        <label>Ideal_trade:</label>
+        <input type="text" class="form-control" v-model="ideal_trade" />
+      </div>
+      <div class="form-group">
+        <label>City:</label>
+        <input type="text" class="form-control" v-model="city" />
+      </div>
+
+      <div class="form-group">
+        <label>State:</label>
+        <input type="text" class="form-control" v-model="state" />
+      </div>
+
+      <div class="form-group">
+        <label>Zip Code:</label>
+        <input type="text" class="form-control" v-model="zipcode" />
+      </div>
+
+      <div class="form-group">
+        <label>Images:</label>
+        <input type="text" class="form-control" v-model="images" />
+      </div>
     </form>
+  </div>
+
+
     
     <button v-on:click="createItem()"> New Post</button>
+
     <router-link v-bind:to="`/`"> Home</router-link>
+
+    
     
   </div>
 </template>
@@ -80,6 +117,7 @@ export default {
       city: "",
       state: "",
       zipcode: "",
+      status: "",
       errors: [],
       currentItem: {},
     };
