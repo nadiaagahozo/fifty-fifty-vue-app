@@ -35,19 +35,21 @@
       </div>
 
       <div>
+        <a v-bind:href="`/items`" class="button">Cancel</a>
         <input type="submit" class="btn btn-primary" value="Submit">
-
+        <button v-on:click="destroyItem(item)">Delete Item</button>
       </div>
 
-      <button v-on:click="destroyItem(item)">Delete Item</button>
-      <router-link v-bind:to="`/items/`">Cancel</router-link>
-
+      
+      
 
     </form>
 
      
-    
+     <!-- <a v-bind:href="`/items/${item.id}/edit`" class="button primary small">Update</a>
+    <a v-bind:href="`/items`" class="button small">Home</a> -->
 
+   
 
 
   </div>

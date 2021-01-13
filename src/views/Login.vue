@@ -13,9 +13,10 @@
         <label>Password:</label>
         <input type="password" class="form-control" v-model="password">
       </div>
-      <input type="submit" class="btn btn-primary" value="Submit">
+      <input type="submit" class="btn btn-success" value="Submit">
     </form>
   </div>
+  
 </template>
 
 <script>
@@ -41,7 +42,7 @@ export default {
           axios.defaults.headers.common["Authorization"] =
             "Bearer " + response.data.jwt;
           localStorage.setItem("jwt", response.data.jwt);
-          this.$router.push("/");
+          this.$router.push("/items");
         })
         .catch(error => {
           this.errors = ["Invalid email or password."];
@@ -52,3 +53,19 @@ export default {
   }
 };
 </script>
+
+<style>
+
+.form-control{
+  text-align: center;
+  height: 40px;
+  width: 40px;
+  font-size: 20pt;
+  padding: 100px;
+};
+
+#button {
+margin: 25px, 5px, 20px, 20px;
+}
+
+</style>

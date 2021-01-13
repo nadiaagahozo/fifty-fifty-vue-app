@@ -67,7 +67,7 @@
         <input type="text" class="form-control" v-model="description" />
       </div>
       <div class="form-group">
-        <label>Ideal_trade:</label>
+        <label>Ideal Trade:</label>
         <input type="text" class="form-control" v-model="ideal_trade" />
       </div>
       <div class="form-group">
@@ -96,7 +96,7 @@
     
     <button v-on:click="createItem()"> New Post</button>
 
-    <router-link v-bind:to="`/`"> Home</router-link>
+    <router-link v-bind:to="`/items`"> Home</router-link>
 
     
     
@@ -147,6 +147,7 @@ export default {
         this.city = "";
         this.state = "";
         this.zipcode = "";
+        this.$router.push("/items");
       })
       .catch(error => console.log(error.response));
     },
