@@ -1,15 +1,6 @@
 <template>
   <div  class="items-show">
-    <!-- <h2>{{ item.listing }}</h2> -->
     <img v-bind:src="`${item.images}`" v-bind:alt="item.listing">
-    
-    <!-- <p>username: {{ item.username }}</p>
-    <p>ideal trade: {{ item.ideal_trade }}</p>
-    <p>Description: {{ item.description }}</p>
-    <p>city: {{ item.city }}</p>
-    <p>state: {{ item.state }}</p>
-    <p>zipcode: {{ item.zipcode }}</p> -->
-
     <section>
       <h3>{{ item.listing }}</h3>
       <div class="table-wrapper">
@@ -35,11 +26,11 @@
             </tr>
             <tr>
               <td><b>City</b></td>
-              <td>{{ item.state }}</td>
+              <td>{{ item.city }}</td>
             </tr>
             <tr>
               <td><b>State and Zipcode</b></td>
-              <td>{{ item.zipcode }}</td>
+              <td> {{ item.state }} -- {{ item.zipcode }}</td>
             </tr>
           </tbody>
         </table>
@@ -48,15 +39,9 @@
 
 
 
-  <a href="`/items`" class="button small">Contact Info</a>
+    <a href="`/items`" class="button small">Contact Info</a>
     <a v-bind:href="`/items/${item.id}/edit`" class="button primary small">Update</a>
     <a v-bind:href="`/items`" class="button small">Home</a>
-    
-    <!-- <router-link v-bind:to="`/items/${item.id}/edit`">Update</router-link> -->
-    <!-- <button>Contact Info</button> -->
-
-    
-    <!-- <router-link v-bind:to="`/items`"> Home</router-link> -->
   </div>
   
 </template>

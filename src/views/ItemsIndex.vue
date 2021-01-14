@@ -1,39 +1,9 @@
 <template>
     <div class="home">
-      <!-- <h1>All Items</h1>
-
-      <div>
-        Search by listing:
-        <input v-model="listingFilter" />
-      </div>
-
-      <div v-for="item in filterBy(items, listingFilter, 'listing', 'description', 'ideal_trade', 'username', 'image', 'city', 'state', 'zipcode')">
-        <img v-bind:src="`${item.image}`" v-bind:alt="item.listing" />
-      </div> -->
-      
-      <!-- <div class="card-group">
-        <div class="card" v-for="item in filterBy(items, listingFilter, 'listing', 'description', 'ideal_trade', 'username', 'image', 'city', 'state', 'zipcode')">
-          <img v-bind:src="`${item.images}`" v-bind:alt="item.listing" />
-          <div class="card-body">
-            <router-link v-bind:to="`/items/${item.id}`">
-              <h3 class="card-title">{{ item.listing }}</h3>
-            </router-link>
-            <p class="card-text"> {{ item.username }}</p>
-            <p class="card-text"> Ideal trade: {{ item.ideal_trade }}</p> 
-          </div>
-                 
-        </div>
-      </div> -->
-    
 
       <!-- Main -->
         <div id="main">
           <div class="inner">
-            <!-- <header>
-              <h1>This is Phantom, a free, fully responsive site<br />
-              template designed by <a href="http://html5up.net">HTML5 UP</a>.</h1>
-              <p>Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod sit amet nisi euismod sed cursus arcu elementum ipsum arcu vivamus quis venenatis orci lorem ipsum et magna feugiat veroeros aliquam. Lorem ipsum dolor sit amet nullam dolore.</p>
-            </header> -->
             <section class="tiles">
               <!-- <article v-for="item in items" class="style1">
                 <span class="image">

@@ -1,29 +1,19 @@
 <template>
   <div id="app">
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/items/new">New Post(Upload)</router-link> |
-      <router-link to="/signup">Signup</router-link> |
-      <router-link to="/Login">Login</router-link> |
-      <router-link to="/Logout">Logout</router-link> |
-    </div> -->
-
     <!-- Header -->
     <header id="header">
       <div class="inner">
-
         <!-- Logo -->
-          <a href="/items" class="logo">
-            <span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Fifty Five</span>
-          </a>
+        <a href="/items" class="logo">
+          <span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Fifty-Fifty</span>
+        </a>
 
         <!-- Nav -->
-          <nav>
-            <ul>
-              <li><a href="#menu">Menu</a></li>
-            </ul>
-          </nav>
-
+        <nav>
+          <ul>
+            <li><a href="#menu">Menu</a></li>
+          </ul>
+        </nav>
       </div>
     </header>
 
@@ -37,17 +27,10 @@
           <li><a href="/login">Login</a></li>
           <li><a href="/signup">Signup</a></li>
           <li><a href="/logout">Logout</a></li>
-          <li><a href="generic.html">generic html</a></li>
-          <li><a href="elements.html">Elements</a></li>
+          <!-- <li><a href="elements.html">Elements</a></li> -->
         </ul>
       </div>
-
-
-
     </nav>
-
-
-
 
     <router-view/>
 
@@ -91,22 +74,5 @@
           </ul>
         </div>
       </footer>
-
-
-
-
-
-
-
-
-
-
-
-
-
   </div>
 </template>
-
-<style>
-
-</style>
